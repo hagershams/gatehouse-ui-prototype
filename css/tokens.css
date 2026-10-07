@@ -1,0 +1,85 @@
+/* Gatehouse design tokens.
+   Direction: a calm, dense operations tool. Neutral cool-grey canvas, one green
+   action colour, amber reserved for the barrier/plate signature and "open" state. */
+:root {
+  /* surfaces */
+  --canvas: #f3f5f4;
+  --surface: #ffffff;
+  --surface-sunken: #f7f9f8;
+  --surface-hover: #eef2f0;
+  --line: #dde3e0;
+  --line-strong: #c6cfcb;
+
+  /* ink */
+  --ink: #14201c;
+  --ink-2: #44534d;
+  --ink-3: #66756f; /* >= 4.5:1 on white */
+  --ink-inverse: #ffffff;
+
+  /* action */
+  --primary: #0f5e52;
+  --primary-hover: #0b4b41;
+  --primary-soft: #e3f0ec;
+  --focus: #1c7cd6;
+
+  /* signature: barrier / plate amber */
+  --barrier: #f2b33d;
+  --barrier-ink: #7a4b00;
+  --barrier-soft: #fff4d9;
+
+  /* status (always paired with icon + label) */
+  --ok: #1e7f46;
+  --ok-soft: #e4f4ea;
+  --bad: #b8352a;
+  --bad-soft: #fbe9e7;
+  --warn: #8a5a00;
+  --warn-soft: #fff1d6;
+  --info: #335a8a;
+  --info-soft: #e8eff8;
+  --muted-soft: #eef1f0;
+
+  /* chart series (validated: scripts/validate_palette.js, light, #ffffff) */
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --grid: #e9edeb;
+
+  /* plate */
+  --plate-band: #3b6fb6;
+
+  /* type */
+  --font-sans: "IBM Plex Sans", "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-arabic: "IBM Plex Sans Arabic", "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+
+  /* space (4px grid) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+
+  --radius-sm: 4px;
+  --radius: 6px;
+  --radius-lg: 10px;
+  --shadow-pop: 0 10px 30px rgba(20, 32, 28, 0.14), 0 2px 6px rgba(20, 32, 28, 0.08);
+  --sidebar-w: 236px;
+  --topbar-h: 56px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
