@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Review checklist · Gatehouse prototype</title>
+  <meta name="description" content="One-page checklist for reviewing the Gatehouse UI prototype." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230f5e52'/%3E%3Crect x='4' y='9' width='3.5' height='11' rx='1' fill='white'/%3E%3Cpath d='M7.5 12h12' stroke='%23f2b33d' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/app.css" />
+  <link rel="stylesheet" href="docs.css" />
+</head>
+<body>
+  <header class="doc-top">
+    <a class="brand" href="../" aria-label="Open the Gatehouse prototype">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="3" y="9" width="4" height="12" rx="1" fill="#fff"/><path d="M7 12h14" stroke="#f2b33d" stroke-width="3" stroke-linecap="round"/><path d="M3 21h18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+      <span><span class="brand-name">Gatehouse</span><br><span class="brand-sub">Review checklist</span></span>
+    </a>
+    <span class="spacer"></span>
+    <a class="btn ghost hide-sm" href="user-guide.html">Full demo guide</a>
+    <a class="btn primary" href="../">Open the prototype</a>
+  </header>
+
+  <div class="doc-wrap" style="grid-template-columns: minmax(0, 1fr)">
+    <main class="doc" style="margin: 0 auto">
+      <h1>Review checklist</h1>
+      <p class="lede">Tick items off as you go. Ticks are just for you; they aren't saved or sent anywhere.</p>
+      <div class="pw"><span class="muted">Demo password for every account</span><code>demo1234</code></div>
+      <p class="small muted">Everything runs on demo data in your browser. No real gate, camera or person is affected. Reload the prototype to reset the data. Need detail? See the <a href="user-guide.html">full demo guide</a>.</p>
+
+      <section><h2>Sign-in</h2><ul class="checklist">
+        <li><input type="checkbox" id="c1"><label for="c1">Wrong password is refused with a clear message.</label></li>
+        <li><input type="checkbox" id="c2"><label for="c2"><i>Blocked officer · Hany Morsy</i> is refused as blocked.</label></li>
+        <li><input type="checkbox" id="c3"><label for="c3"><b>Administrator · Mona Adel</b> signs in and opens the dashboard.</label></li>
+      </ul></section>
+
+      <section><h2>Dashboard</h2><ul class="checklist">
+        <li><input type="checkbox" id="c4"><label for="c4">Four headline figures are shown.</label></li>
+        <li><input type="checkbox" id="c5"><label for="c5">The gate list shows each gate as <b>Online/Offline</b> and <b>Open/Closed/Unknown</b>.</label></li>
+        <li><input type="checkbox" id="c6"><label for="c6"><i>Movements today, by hour</i> and <i>Traffic by gate</i> charts show values on hover.</label></li>
+        <li><input type="checkbox" id="c7"><label for="c7">New vehicles appear in <b>Live access</b> every few seconds.</label></li>
+      </ul></section>
+
+      <section><h2>Gates</h2><ul class="checklist">
+        <li><input type="checkbox" id="c8"><label for="c8"><i>South Gate · Exit</i> is <b>Offline</b>, its barrier is <b>Unknown</b>, and <b>Open gate</b> is greyed out.</label></li>
+        <li><input type="checkbox" id="c9"><label for="c9"><b>Check status</b> on an online gate reports <i>online · ms</i>; on the offline gate, <i>did not respond</i>.</label></li>
+        <li><input type="checkbox" id="c10"><label for="c10"><b>Open gate</b> → confirm → <b>Command sent</b> → a few seconds later <b>Open</b>.</label></li>
+        <li><input type="checkbox" id="c11"><label for="c11"><b>Close gate</b> → confirm → <b>Command sent</b> → <b>Closed</b>.</label></li>
+        <li><input type="checkbox" id="c12"><label for="c12">A gate's detail page shows connectivity, barrier, recent movements and cameras.</label></li>
+      </ul></section>
+
+      <section><h2>Activity</h2><ul class="checklist">
+        <li><input type="checkbox" id="c13"><label for="c13"><i>Movements</i>: <b>7 days</b>, direction / method / gate filters and search all work.</label></li>
+        <li><input type="checkbox" id="c14"><label for="c14"><b>Export CSV</b> downloads a file.</label></li>
+        <li><input type="checkbox" id="c15"><label for="c15"><i>Audit log</i> lists staff actions (including your gate commands).</label></li>
+      </ul></section>
+
+      <section><h2>Residents</h2><ul class="checklist">
+        <li><input type="checkbox" id="c16"><label for="c16">Search finds a resident; clicking a row opens their details.</label></li>
+        <li><input type="checkbox" id="c17"><label for="c17"><b>Add resident</b> without data shows field errors.</label></li>
+        <li><input type="checkbox" id="c18"><label for="c18">Adding with a name, a free unit and a phone number succeeds.</label></li>
+      </ul></section>
+
+      <section><h2>Visitors / QR</h2><ul class="checklist">
+        <li><input type="checkbox" id="c19"><label for="c19"><i>Visitor passes</i>, <i>Visit log</i> and <i>Walk-in visitors</i> tabs all load.</label></li>
+        <li><input type="checkbox" id="c20"><label for="c20"><b>Issue visitor pass</b> with a 3-digit national ID is rejected (14 digits required).</label></li>
+        <li><input type="checkbox" id="c21"><label for="c21">With valid data, <b>Pass ready</b> shows a QR preview (visual only, not scannable).</label></li>
+      </ul></section>
+
+      <section><h2>Vehicles, cameras, staff, units</h2><ul class="checklist">
+        <li><input type="checkbox" id="c22"><label for="c22"><i>Vehicles</i>: number plates, owners, and the <b>On site / Away</b> filter.</label></li>
+        <li><input type="checkbox" id="c23"><label for="c23"><i>Cameras</i>: role, gate, health (online/offline) and the <b>Unassigned</b> spare.</label></li>
+        <li><input type="checkbox" id="c24"><label for="c24"><i>Staff users</i>: <b>Block</b> a user (with confirmation); status becomes <b>Blocked</b>.</label></li>
+        <li><input type="checkbox" id="c25"><label for="c25"><i>Units &amp; departments</i>: buildings with apartments, villas, departments and teams.</label></li>
+      </ul></section>
+
+      <section><h2>Roles <span class="muted small" style="font-weight:400">your name, top right → Switch demo role</span></h2><ul class="checklist">
+        <li><input type="checkbox" id="c26"><label for="c26"><b>Manager</b>: no <i>Open/Close gate</i> buttons; can add residents.</label></li>
+        <li><input type="checkbox" id="c27"><label for="c27"><b>Security officer</b>: no <i>Staff users</i> or <i>Units &amp; departments</i> in the menu.</label></li>
+        <li><input type="checkbox" id="c28"><label for="c28"><b>Security officer</b> opening <a href="../#/users">…/#/users</a> sees <b>You don't have access to this page</b>.</label></li>
+        <li><input type="checkbox" id="c29"><label for="c29"><b>Resident · Wael Kamel</b>: only <i>Visitor invitations</i>; <b>Invite a visitor</b> produces a pass.</label></li>
+      </ul></section>
+
+      <section><h2>Direct role links</h2><ul class="checklist">
+        <li><input type="checkbox" id="c30"><label for="c30"><a href="../?as=superAdmin">?as=superAdmin</a> — Super admin</label></li>
+        <li><input type="checkbox" id="c31"><label for="c31"><a href="../?as=admin">?as=admin</a> — Administrator</label></li>
+        <li><input type="checkbox" id="c32"><label for="c32"><a href="../?as=manager">?as=manager</a> — Manager</label></li>
+        <li><input type="checkbox" id="c33"><label for="c33"><a href="../?as=security">?as=security</a> — Security officer</label></li>
+        <li><input type="checkbox" id="c34"><label for="c34"><a href="../?as=resident">?as=resident</a> — Resident</label></li>
+      </ul></section>
+
+      <p class="no-print" style="margin-top:var(--s-6)"><button class="btn" type="button" onclick="window.print()">Print this checklist</button></p>
+      <footer class="doc-foot">
+        Gatehouse UI prototype · demo data only ·
+        <a href="../">Open the prototype</a> · <a href="user-guide.html">Full demo guide</a>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

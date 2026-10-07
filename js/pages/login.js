@@ -34,6 +34,7 @@
               <p class="muted xs" style="margin-bottom:6px">Each opens the app with that role's permissions. Password: <span class="mono">demo1234</span></p>
               ${window.GH.DEMO.map((d) => html`<button type="button" data-demo="${d.email}">${icon(d.resident ? "home" : "shield")}${d.label}</button>`)}
               <button type="button" data-demo="hany.morsy@gate-system.com">${icon("lock")}Blocked officer · Hany Morsy</button>
+              <p class="xs" style="margin-top:8px;padding-top:8px;border-top:1px solid var(--line)">New here? <a href="docs/user-guide.html" target="_blank" rel="noopener" data-guide>Read the demo guide</a> · <a href="docs/demo-checklist.html" target="_blank" rel="noopener">Review checklist</a></p>
             </div>` : ""}
           </div>
         </section>

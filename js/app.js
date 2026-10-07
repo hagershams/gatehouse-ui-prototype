@@ -134,7 +134,8 @@
                 <div class="small muted" style="padding:6px 8px">${s.email}</div>
                 ${api.mode === "mock" ? html`<div class="small" style="padding:8px 8px 4px;font-weight:600">Switch demo role</div>
                   ${DEMO.map((d) => html`<button class="menu-item" role="menuitem" data-switch="${d.email}">${icon(d.resident ? "home" : "shield")}${d.label}${d.email === s.email ? html`<span class="spacer"></span>${icon("check")}` : ""}</button>`)}
-                  <div style="border-top:1px solid var(--line);margin:6px 0"></div>` : ""}
+                  <div style="border-top:1px solid var(--line);margin:6px 0"></div>
+                  <a class="menu-item" role="menuitem" href="docs/user-guide.html" target="_blank" rel="noopener" data-guide style="text-decoration:none">${icon("info")}Demo guide</a>` : ""}
                 <button class="menu-item" role="menuitem" data-logout>${icon("logout")}Sign out</button>
               </div>
             </div>

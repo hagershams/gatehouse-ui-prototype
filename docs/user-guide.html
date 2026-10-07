@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Demo guide · Gatehouse prototype</title>
+  <meta name="description" content="How to review and test the Gatehouse gate and access-control UI prototype." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230f5e52'/%3E%3Crect x='4' y='9' width='3.5' height='11' rx='1' fill='white'/%3E%3Cpath d='M7.5 12h12' stroke='%23f2b33d' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/app.css" />
+  <link rel="stylesheet" href="docs.css" />
+</head>
+<body>
+  <a class="skip" href="#overview">Skip to content</a>
+  <header class="doc-top">
+    <a class="brand" href="../" aria-label="Open the Gatehouse prototype">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="3" y="9" width="4" height="12" rx="1" fill="#fff"/><path d="M7 12h14" stroke="#f2b33d" stroke-width="3" stroke-linecap="round"/><path d="M3 21h18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+      <span><span class="brand-name">Gatehouse</span><br><span class="brand-sub">Demo guide</span></span>
+    </a>
+    <span class="spacer"></span>
+    <a class="btn ghost hide-sm" href="demo-checklist.html">Review checklist</a>
+    <a class="btn primary" href="../">Open the prototype</a>
+  </header>
+
+  <div class="doc-wrap">
+    <nav class="toc" aria-label="Contents">
+      <div class="toc-title">Contents</div>
+      <ol>
+        <li><a href="#overview">1. Overview</a></li>
+        <li><a href="#open">2. Open the prototype</a></li>
+        <li><a href="#accounts">3. Demo accounts</a></li>
+        <li><a href="#roles">4. Role comparison</a></li>
+        <li><a href="#flow">5. Recommended demo flow</a></li>
+        <li><a href="#gates">6. Gate testing</a></li>
+        <li><a href="#residents">7. Residents</a></li>
+        <li><a href="#visitors">8. Visitors and QR passes</a></li>
+        <li><a href="#activity">9. Activity</a></li>
+        <li><a href="#vehicles">10. Vehicles</a></li>
+        <li><a href="#cameras">11. Cameras</a></li>
+        <li><a href="#staff">12. Staff users</a></li>
+        <li><a href="#units">13. Units &amp; departments</a></li>
+        <li><a href="#portal">14. Resident portal</a></li>
+        <li><a href="#access">15. Role-based access</a></li>
+        <li><a href="#real-vs-mock">16. What is real vs mock</a></li>
+        <li><a href="#limitations">17. Known limitations</a></li>
+        <li><a href="#troubleshooting">18. Troubleshooting</a></li>
+      </ol>
+    </nav>
+
+    <main class="doc">
+      <h1>Gatehouse prototype — demo guide</h1>
+      <p class="lede">Everything you need to review the Gatehouse gate and access-control prototype. No technical knowledge is needed.</p>
+      <div class="links">
+        <a class="link-card" href="../"><b>Open the prototype</b><span>https://hagershams.github.io/gatehouse-ui-prototype/</span></a>
+        <a class="link-card" href="demo-checklist.html"><b>Review checklist</b><span>A one-page list of things to try</span></a>
+      </div>
+
+      <section id="overview">
+        <h2><span class="num">1.</span>Overview</h2>
+        <p><b>Gatehouse</b> is a UI/UX prototype of a gate and access-control system for a gated residential compound. It shows how the security office and management team would:</p>
+        <ul>
+          <li>watch every gate live and open or close barriers,</li>
+          <li>follow vehicles and visitors coming in and going out,</li>
+          <li>manage residents, vehicles, visitor passes, cameras and staff.</li>
+        </ul>
+        <div class="callout warn"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17v.01"/></svg>
+          <p><b>Important:</b> the prototype runs entirely on <b>demo data inside your browser</b>. It does <b>not</b> control any real gate, camera or system, and nothing you do affects real people or records.</p></div>
+      </section>
+
+      <section id="open">
+        <h2><span class="num">2.</span>Open the prototype</h2>
+        <ol class="steps">
+          <li>Open <a href="../">https://hagershams.github.io/gatehouse-ui-prototype/</a> in any modern browser (Chrome, Edge, Safari or Firefox).</li>
+          <li>That's all: there's nothing to install and no GitHub account is needed. It also works on a phone.</li>
+        </ol>
+      </section>
+
+      <section id="accounts">
+        <h2><span class="num">3.</span>Demo accounts</h2>
+        <p>These are <b>demo credentials for the prototype only</b>. All accounts use the same password:</p>
+        <div class="pw"><span class="muted">Password for every account</span><code>demo1234</code></div>
+        <div class="panel"><div class="table-wrap"><table class="data">
+          <thead><tr><th>Role</th><th>Email</th><th>What it demonstrates</th></tr></thead>
+          <tbody>
+            <tr><td><b>Super admin</b></td><td><code>omar.hassan@gate-system.com</code></td><td>Everything, including managing other administrators and deleting staff users</td></tr>
+            <tr><td><b>Administrator</b></td><td><code>mona.adel@gate-system.com</code></td><td>Day-to-day administration: gates, cameras, residents, vehicles and staff</td></tr>
+            <tr><td><b>Manager</b></td><td><code>karim.fathy@gate-system.com</code></td><td>Community management: residents, vehicles, units and visitor passes; no gate control</td></tr>
+            <tr><td><b>Security officer</b></td><td><code>youssef.nabil@gate-system.com</code></td><td>Gate operations: opening and closing gates, logging movements, issuing visitor passes</td></tr>
+            <tr><td><b>Resident</b></td><td><code>resident@gate-system.com</code></td><td>The resident's own experience (Wael Kamel, Villa 04): inviting visitors</td></tr>
+            <tr><td><b>Blocked officer</b> <span class="muted small">(negative test)</span></td><td><code>hany.morsy@gate-system.com</code></td><td>Shows what happens when a blocked account tries to sign in</td></tr>
+          </tbody></table></div></div>
+        <div class="callout try"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+          <p><b>Fastest way in:</b> the sign-in page lists these accounts under <i>Prototype demo accounts</i>. Click one to sign in instantly; no typing needed.</p></div>
+      </section>
+
+      <section id="roles">
+        <h2><span class="num">4.</span>Role comparison</h2>
+        <p><span class="yes">✓</span> available · <span class="no">—</span> hidden or not allowed</p>
+        <div class="panel"><div class="table-wrap"><table class="data matrix">
+          <thead><tr><th>Area / action</th><th>Super admin</th><th>Administrator</th><th>Manager</th><th>Security officer</th><th>Resident</th></tr></thead>
+          <tbody>
+            <tr><td>Dashboard</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td></tr>
+            <tr><td>Gates: view status, <b>Check status</b></td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td></tr>
+            <tr><td>Gates: <b>Open / Close</b></td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td><td class="yes">✓</td><td class="no">—</td></tr>
+            <tr><td>Gates: add, edit, delete</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+            <tr><td>Activity: movements and audit log</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td></tr>
+            <tr><td>Activity: log a manual movement</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td><td class="yes">✓</td><td class="no">—</td></tr>
+            <tr><td>Residents: view</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td></tr>
+            <tr><td>Residents: add, edit, suspend/restore access, set app sign-in</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td></tr>
+            <tr><td>Residents: delete</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+            <tr><td>Visitors: passes, visit log, walk-ins</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td></tr>
+            <tr><td>Visitors: <b>Issue visitor pass</b></td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td>own visitors only</td></tr>
+            <tr><td>Vehicles: view</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td></tr>
+            <tr><td>Vehicles: register, edit, delete</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td></tr>
+            <tr><td>Cameras: view health</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td></tr>
+            <tr><td>Cameras: add, edit, delete</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+            <tr><td>Staff users: view</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td></tr>
+            <tr><td>Staff users: add, edit, block/unblock</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+            <tr><td>Staff users: delete</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+            <tr><td>Units &amp; departments: view</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td></tr>
+            <tr><td>Units: add, delete</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td></tr>
+            <tr><td>Departments and teams: add, delete</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+            <tr><td>Resident portal (<i>Visitor invitations</i>)</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+          </tbody></table></div></div>
+        <p>Two extra rules you may notice:</p>
+        <ul>
+          <li>Only a <b>Super admin</b> can create, change or manage other Super admin accounts.</li>
+          <li>Nobody can block or delete <b>their own</b> account.</li>
+        </ul>
+      </section>
+
+      <section id="flow">
+        <h2><span class="num">5.</span>Recommended demo flow <span class="muted small" style="font-weight:400">about 15 minutes</span></h2>
+        <div class="panel"><div class="table-wrap"><table class="data">
+          <thead><tr><th>#</th><th>Try this</th><th>Expected result</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>On the sign-in page, click <b>Administrator · Mona Adel</b>.</td><td>The <i>Operations overview</i> dashboard opens.</td></tr>
+            <tr><td>2</td><td>Review the dashboard.</td><td>Four headline figures; a gate list; <i>Movements today, by hour</i>; <i>Live access</i> (new vehicles appear every few seconds); <i>Traffic by gate</i>.</td></tr>
+            <tr><td>3</td><td>Click <b>Gates</b> in the left menu.</td><td>Six gate cards. <i>South Gate · Exit</i> is <b>Offline</b> with the barrier shown as <b>Unknown</b>.</td></tr>
+            <tr><td>4</td><td>Click a gate name, for example <b>North Gate · Entry</b>.</td><td>The gate's detail page: connectivity, barrier position, recent movements, cameras.</td></tr>
+            <tr><td>5</td><td>Click <b>Check status</b>.</td><td>A message reports the gate is online, its response time and its position.</td></tr>
+            <tr><td>6</td><td>Click <b>Open gate</b>, then confirm.</td><td>The gate shows <b>Command sent</b>. A few seconds later it reports <b>Open</b>.</td></tr>
+            <tr><td>7</td><td>Click <b>Close gate</b>, then confirm.</td><td>Same steps: <b>Command sent</b>, then <b>Closed</b>.</td></tr>
+            <tr><td>8</td><td>Open <b>Activity</b>. Try <b>7 days</b>, the filters and <b>Export CSV</b>. Then open <b>Audit log</b>.</td><td>Every movement is listed and filterable; the audit log shows staff actions, including your gate commands.</td></tr>
+            <tr><td>9</td><td>Open <b>Residents</b>, search a name, open a resident, then use <b>Add resident</b>.</td><td>Resident details open in a side panel; your new resident appears in the list.</td></tr>
+            <tr><td>10</td><td>Open <b>Visitors</b> and click <b>Issue visitor pass</b>.</td><td>After filling the form, a <b>Pass ready</b> panel shows the pass and a QR preview.</td></tr>
+            <tr><td>11</td><td>Open <b>Vehicles</b> and filter <b>On site</b>.</td><td>Only vehicles currently inside are shown.</td></tr>
+            <tr><td>12</td><td>Open <b>Cameras</b>.</td><td>Each camera's role, gate and health (online/offline).</td></tr>
+            <tr><td>13</td><td>Open <b>Staff users</b>.</td><td>Staff list with roles, teams and status (active, blocked, suspended).</td></tr>
+            <tr><td>14</td><td>Open <b>Units &amp; departments</b>.</td><td>Buildings with their apartments, villas, and the staff departments.</td></tr>
+            <tr><td>15</td><td>Click your name (top right) → <b>Switch demo role</b> → <b>Security officer</b>.</td><td>The menu shrinks: no <i>Staff users</i> or <i>Units &amp; departments</i>.</td></tr>
+            <tr><td>16</td><td>While signed in as Security officer, open <a href="../#/users">…/gatehouse-ui-prototype/#/users</a>.</td><td><i>You don't have access to this page</i>.</td></tr>
+            <tr><td>17</td><td>Switch role to <b>Resident · Wael Kamel</b>.</td><td>The resident portal: <i>Visitor invitations</i> with the resident's own passes.</td></tr>
+          </tbody></table></div></div>
+      </section>
+
+      <section id="gates">
+        <h2><span class="num">6.</span>Gate testing</h2>
+        <p>Each gate shows <b>two separate indicators</b>. They answer different questions:</p>
+        <div class="panel"><div class="table-wrap"><table class="data">
+          <thead><tr><th>Indicator</th><th>Meaning</th><th>Possible values</th></tr></thead>
+          <tbody>
+            <tr><td><b>Connectivity</b></td><td>Can the system reach the gate's controller?</td><td><span class="badge ok">Online</span> <span class="badge bad">Offline</span></td></tr>
+            <tr><td><b>Barrier</b></td><td>Where did the gate last report its barrier?</td><td><span class="badge open">Open</span> <span class="badge">Closed</span> <span class="badge outline">Unknown</span> <span class="muted small">(shown while offline)</span></td></tr>
+          </tbody></table></div></div>
+        <p>A gate can be <i>Online and Closed</i>, <i>Online and Open</i>, or <i>Offline and Unknown</i>. When a gate is offline the system can't know the barrier's position, so it says <b>Unknown</b> rather than guessing.</p>
+        <h3>Open a gate <span class="muted small" style="font-weight:400">Super admin, Administrator or Security officer</span></h3>
+        <ol class="steps">
+          <li>Click <b>Open gate</b> (on the Gates page, the gate detail page or the dashboard).</li>
+          <li>A confirmation asks <i>"Open [gate name]?"</i>. Click <b>Open gate</b>.</li>
+          <li>The gate shows <span class="badge warn">Command sent</span>. The system has sent the command but hasn't yet heard back.</li>
+          <li>A few seconds later the gate <i>reports</i> its new position: the badge changes to <span class="badge open">Open</span> and a message confirms it.</li>
+        </ol>
+        <p><b>Close a gate:</b> the same steps with <b>Close gate</b>, ending in <span class="badge">Closed</span>.</p>
+        <p><b>Check status:</b> asks the gate for its current state. On <i>South Gate · Exit</i> (offline) you'll see <i>"did not respond"</i>, and <b>Open gate</b> stays disabled.</p>
+        <div class="callout"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg>
+          <p><b>Simulated:</b> in this prototype the gate "reports back" automatically after a few seconds. No real barrier moves. If no report arrives within 15 seconds, the prototype warns you, as the real system would.</p></div>
+      </section>
+
+      <section id="residents">
+        <h2><span class="num">7.</span>Residents</h2>
+        <ul>
+          <li><b>Find a resident:</b> type a name, unit or phone number in the search box. Use <b>All / Allowed / Suspended</b> to filter by access.</li>
+          <li><b>What's shown:</b> name and phone, unit (villa or apartment), registered vehicles (shown as number plates) and access status.</li>
+          <li><b>Open a resident:</b> click a row to see details, vehicles and actions: <b>Edit details</b>, <b>Suspend / Restore access</b>, <b>Set sign-in</b> (for the resident app) and <b>Delete</b>. Which of these appear depends on your role.</li>
+          <li><b>Add a resident:</b> click <b>Add resident</b> and fill in the name, a <b>free</b> unit and a phone number. Only free units can be chosen; each villa or apartment can have one resident. National ID, if entered, must be 14 digits.</li>
+          <li><b>Notice:</b> errors appear next to the field that needs fixing. Suspending access asks for confirmation first.</li>
+        </ul>
+      </section>
+
+      <section id="visitors">
+        <h2><span class="num">8.</span>Visitors and QR passes</h2>
+        <div class="panel"><div class="table-wrap"><table class="data">
+          <thead><tr><th>Tab</th><th>What it shows</th></tr></thead>
+          <tbody>
+            <tr><td><b>Visitor passes</b></td><td>Every pass: visitor, host resident, validity window, visits used, status (<i>Valid, In use, Scheduled, Used up, Expired</i>) and who issued it. Click a row to see the pass.</td></tr>
+            <tr><td><b>Visit log</b></td><td>Each visit: arrival, departure, how long the visitor stayed.</td></tr>
+            <tr><td><b>Walk-in visitors</b></td><td>Visitors registered at the gate from an ID card, driving licence or passport.</td></tr>
+          </tbody></table></div></div>
+        <p><b>Issue a visitor pass:</b> click <b>Issue visitor pass</b>, then choose the host resident and enter the visitor's name, phone, national ID, validity and number of visits. The form checks that:</p>
+        <ul><li>the national ID has <b>14 digits</b>,</li><li>the phone number contains only digits,</li><li><b>Valid until</b> is after <b>Valid from</b>.</li></ul>
+        <p>The result is a <b>Pass ready</b> panel with a QR code and a <b>Copy pass code</b> button. One <i>visit</i> means one entry plus one exit.</p>
+        <div class="callout warn"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17v.01"/></svg>
+          <p><b>Note:</b> the QR code is a <b>visual preview only</b>. It isn't a real, scannable code.</p></div>
+      </section>
+
+      <section id="activity">
+        <h2><span class="num">9.</span>Activity</h2>
+        <ul>
+          <li><b>Movements:</b> every vehicle entry and exit. Filter by <b>Today / 7 days / 14 days</b>, direction (entries/exits), method (plate recognition, QR pass, manual, card) and gate, or search by plate or person.</li>
+          <li><b>Export CSV:</b> downloads the filtered list as a spreadsheet file.</li>
+          <li><b>Log manual movement</b> (Super admin, Administrator, Security officer): record a vehicle that passed without automatic recognition.</li>
+          <li><b>Audit log</b> tab: who did what and when (created, updated, deleted, blocked…), with search and an action filter.</li>
+        </ul>
+      </section>
+
+      <section id="vehicles">
+        <h2><span class="num">10.</span>Vehicles</h2>
+        <ul>
+          <li>Each vehicle is shown with its <b>number plate</b> (Egyptian plate style), make and model, owner and whether it is <b>On site</b> or <b>Away</b>.</li>
+          <li>Search by plate, make or owner, and filter <b>All / On site / Away</b>.</li>
+          <li>Super admin, Administrator and Manager can click a vehicle to edit it, or use <b>Register vehicle</b>. A plate that already exists is rejected.</li>
+        </ul>
+      </section>
+
+      <section id="cameras">
+        <h2><span class="num">11.</span>Cameras</h2>
+        <ul>
+          <li>Lists the plate-recognition cameras, driver cameras and QR readers, which gate each one serves, its address, and its health (<b>Online</b> with response time, or <b>Offline</b>). Unassigned spares are marked <b>Unassigned</b>.</li>
+          <li>Filter <b>All / Online / Offline / Unassigned</b>.</li>
+          <li>Super admin and Administrator can add, edit or delete cameras. Camera passwords are never shown after saving.</li>
+        </ul>
+        <div class="callout"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg>
+          <p>The prototype does <b>not</b> connect to any real camera and shows no video.</p></div>
+      </section>
+
+      <section id="staff">
+        <h2><span class="num">12.</span>Staff users</h2>
+        <ul>
+          <li>Lists staff with their role, team, status (<b>Active, Blocked, Suspended</b>) and last sign-in.</li>
+          <li>Search by name or email; filter by role or status.</li>
+          <li><b>Super admin / Administrator:</b> add users and edit their role and team. Use <b>Block</b> or <b>Unblock</b>, which ask for confirmation.</li>
+          <li><b>Super admin only:</b> delete a user.</li>
+        </ul>
+        <div class="callout try"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+          <p><b>Try this:</b> block a user (for example <i>Ahmed Samir</i>), then <b>without reloading the page</b> sign out and try to sign in as <code>ahmed.samir@gate-system.com</code> / <code>demo1234</code>. The sign-in is refused. (The demo account <i>Blocked officer · Hany Morsy</i> shows this straight away.)</p></div>
+      </section>
+
+      <section id="units">
+        <h2><span class="num">13.</span>Units &amp; departments</h2>
+        <ul>
+          <li><b>Units:</b> the compound's buildings (with their apartments indented underneath) and villas, who lives in each, and which are vacant. Super admin, Administrator and Manager can add units. Empty units can be deleted. Apartments must belong to a building.</li>
+          <li><b>Departments:</b> the staff organisation (for example <i>Security → Gate Operations, Patrol</i>) and how many staff are in each team. Super admin and Administrator can add or remove departments and teams.</li>
+        </ul>
+      </section>
+
+      <section id="portal">
+        <h2><span class="num">14.</span>Resident portal</h2>
+        <ul>
+          <li>Sign in as <b>Resident · Wael Kamel</b> (or <code>resident@gate-system.com</code> / <code>demo1234</code>).</li>
+          <li>The resident sees only <b>Visitor invitations</b>: their own passes and an <b>Invite a visitor</b> button.</li>
+          <li>The invite form is the same as staff use, without the host field (the host is the resident). After inviting, a <b>Pass ready</b> panel shows the QR preview.</li>
+        </ul>
+      </section>
+
+      <section id="access">
+        <h2><span class="num">15.</span>Role-based access</h2>
+        <p>You can see the prototype through each role's eyes in three ways:</p>
+        <ol class="steps">
+          <li><b>Sign-in page:</b> click a demo account.</li>
+          <li><b>Inside the app:</b> click your name (top right) → <b>Switch demo role</b>.</li>
+          <li><b>Direct links:</b> each link opens the prototype already signed in as that role.</li>
+        </ol>
+        <div class="panel"><div class="table-wrap"><table class="data">
+          <thead><tr><th>Role</th><th>Direct link</th></tr></thead>
+          <tbody>
+            <tr><td>Super admin</td><td><a href="../?as=superAdmin">https://hagershams.github.io/gatehouse-ui-prototype/?as=superAdmin</a></td></tr>
+            <tr><td>Administrator</td><td><a href="../?as=admin">https://hagershams.github.io/gatehouse-ui-prototype/?as=admin</a></td></tr>
+            <tr><td>Manager</td><td><a href="../?as=manager">https://hagershams.github.io/gatehouse-ui-prototype/?as=manager</a></td></tr>
+            <tr><td>Security officer</td><td><a href="../?as=security">https://hagershams.github.io/gatehouse-ui-prototype/?as=security</a></td></tr>
+            <tr><td>Resident</td><td><a href="../?as=resident">https://hagershams.github.io/gatehouse-ui-prototype/?as=resident</a></td></tr>
+          </tbody></table></div></div>
+        <p>You can also add a page to a link, for example <a href="../?as=security#/gates"><code>?as=security#/gates</code></a>.</p>
+        <p><b>What to expect:</b></p>
+        <ul>
+          <li>Each role sees only the menu items it's allowed to use.</li>
+          <li>Buttons for actions a role can't perform are hidden.</li>
+          <li>Opening a page your role can't use shows <b>"You don't have access to this page"</b>.</li>
+        </ul>
+      </section>
+
+      <section id="real-vs-mock">
+        <h2><span class="num">16.</span>What is real vs mock</h2>
+        <div class="panel"><div class="table-wrap"><table class="data">
+          <thead><tr><th>Feature</th><th>Prototype behavior</th></tr></thead>
+          <tbody>
+            <tr><td>Screens, navigation, forms, tables, filters</td><td><b>Real UI</b>: this is the intended experience</td></tr>
+            <tr><td>Sign-in and roles</td><td><b>Demo accounts only</b>, checked inside the browser; not a real security system</td></tr>
+            <tr><td>Gates, residents, vehicles, visitors, cameras, staff</td><td><b>Demo data</b> created in the browser</td></tr>
+            <tr><td>Opening and closing gates, <i>Check status</i></td><td><b>Simulated.</b> No real gate is contacted; the gate "reports back" automatically.</td></tr>
+            <tr><td><i>Live access</i> feed (vehicles arriving)</td><td><b>Simulated</b> every few seconds</td></tr>
+            <tr><td>QR passes</td><td><b>Visual preview</b>, not scannable</td></tr>
+            <tr><td>Camera health</td><td><b>Demo values</b>; no real cameras or video</td></tr>
+            <tr><td>Adding, editing, deleting, blocking</td><td>Works in the prototype, but <b>only in your browser tab</b>, and <b>resets when you reload</b></td></tr>
+            <tr><td><i>Export CSV</i></td><td>Real file download of the demo data shown</td></tr>
+            <tr><td>Connection to the real system</td><td><b>None.</b> The prototype is not connected to any backend.</td></tr>
+          </tbody></table></div></div>
+      </section>
+
+      <section id="limitations">
+        <h2><span class="num">17.</span>Known limitations</h2>
+        <ul>
+          <li><b>Demo data only:</b> nothing is saved; reloading the page restores the original data, and every reviewer starts from the same data.</li>
+          <li><b>No real gate control:</b> commands are simulated.</li>
+          <li><b>No real cameras:</b> no video streams; camera health is demo data.</li>
+          <li><b>QR codes are previews,</b> not scannable codes.</li>
+          <li><b>Not connected to any backend.</b></li>
+          <li><b>Revoking a visitor pass isn't available;</b> passes end when they expire or are used up.</li>
+          <li><b>Fonts:</b> the page uses Google Fonts. Without internet access to them, it falls back to standard system fonts and still works.</li>
+        </ul>
+      </section>
+
+      <section id="troubleshooting">
+        <h2><span class="num">18.</span>Troubleshooting</h2>
+        <div class="panel"><div class="table-wrap"><table class="data">
+          <thead><tr><th>Problem</th><th>What to do</th></tr></thead>
+          <tbody>
+            <tr><td>Sign-in doesn't work</td><td>Use one of the demo emails above with the password <code>demo1234</code>, or simply click a demo account on the sign-in page. <i>Hany Morsy</i> is blocked on purpose.</td></tr>
+            <tr><td>Return to the sign-in screen</td><td>Click your name (top right) → <b>Sign out</b>.</td></tr>
+            <tr><td>Reset the demo data</td><td><b>Reload the page.</b> The data returns to its original state; you stay signed in. Closing the tab also resets everything and signs you out. (Signing out alone does <i>not</i> reset the data.)</td></tr>
+            <tr><td>Open a different role</td><td>Name (top right) → <b>Switch demo role</b>, or use a direct role link from <a href="#access">section 15</a>.</td></tr>
+            <tr><td>Page looks incomplete or unstyled</td><td>Reload the page. If it persists, try another browser, or check that the internet connection is working.</td></tr>
+            <tr><td><i>Open gate</i> is greyed out</td><td>That gate is <b>Offline</b> (for example <i>South Gate · Exit</i>), so it can't receive commands. Try <b>Check status</b>, or another gate.</td></tr>
+          </tbody></table></div></div>
+      </section>
+
+      <footer class="doc-foot">
+        Gatehouse UI prototype · demo data only ·
+        <a href="../">Open the prototype</a> · <a href="demo-checklist.html">Review checklist</a> ·
+        <a href="https://github.com/hagershams/gatehouse-ui-prototype">GitHub repository</a>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

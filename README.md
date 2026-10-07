@@ -1,113 +1,58 @@
 # Gatehouse — UI prototype
 
-Plain HTML, CSS and vanilla JavaScript. No framework, no build step, no npm packages.
-It runs on an in-memory mock that follows `docs/architecture/ui-api-contract.md`, so the
-screens can be reviewed without the backend. The later React frontend reuses the same
-contract and service shape.
+A clickable UI/UX prototype of a gate and access-control system for a gated residential compound. It covers live gate status and operations, vehicles, residents, visitor passes, cameras and staff.
 
-## Run it
+It runs entirely on **demo data in your browser**. It isn't connected to any real system, and no real gate or camera is controlled.
 
-Either:
+## For reviewers
 
-- **Open the file:** double-click `ui-prototype/index.html` (works from disk), or
-- **Serve it** (recommended, so the browser treats it like a real site):
-
-  ```bash
-  cd ui-prototype
-  python -m http.server 5500
-  # open http://localhost:5500
-  ```
-
-Sign in with a demo account on the login screen (password `demo1234`), or deep-link
-straight into a role:
-
-| Role | Link |
+| | |
 |---|---|
-| Super admin | `index.html?as=superAdmin#/dashboard` |
-| Administrator | `index.html?as=admin#/gates` |
-| Manager | `index.html?as=manager#/residents` |
-| Security officer | `index.html?as=security#/dashboard` |
-| Resident | `index.html?as=resident#/portal` |
+| **Open the prototype** | https://hagershams.github.io/gatehouse-ui-prototype/ |
+| **Demo guide** (how to test, roles, walkthrough) | https://hagershams.github.io/gatehouse-ui-prototype/docs/user-guide.html |
+| **Review checklist** | https://hagershams.github.io/gatehouse-ui-prototype/docs/demo-checklist.html |
+| Guide as Markdown | [docs/USER-GUIDE.md](docs/USER-GUIDE.md) · [docs/DEMO-CHECKLIST.md](docs/DEMO-CHECKLIST.md) |
 
-Switch roles any time from the user menu (top right). Data resets on reload.
+Sign in by clicking a demo account on the sign-in page. All demo accounts use the password **`demo1234`** (demo only):
 
-**Live backend:** `index.html?mode=live` sends the same calls to `/api` and `/ws` on the
-same origin (serve it behind a proxy to the FastAPI app). The mock is the default.
+| Role | Email |
+|---|---|
+| Super admin | `omar.hassan@gate-system.com` |
+| Administrator | `mona.adel@gate-system.com` |
+| Manager | `karim.fathy@gate-system.com` |
+| Security officer | `youssef.nabil@gate-system.com` |
+| Resident | `resident@gate-system.com` |
 
-## Structure
+Or open a role directly: [`?as=superAdmin`](https://hagershams.github.io/gatehouse-ui-prototype/?as=superAdmin) · [`?as=admin`](https://hagershams.github.io/gatehouse-ui-prototype/?as=admin) · [`?as=manager`](https://hagershams.github.io/gatehouse-ui-prototype/?as=manager) · [`?as=security`](https://hagershams.github.io/gatehouse-ui-prototype/?as=security) · [`?as=resident`](https://hagershams.github.io/gatehouse-ui-prototype/?as=resident)
+
+Reload the page to reset the demo data.
+
+## Run it locally (optional)
+
+Plain HTML, CSS and JavaScript: no framework, no build step, no packages. Either open `index.html` directly, or serve the folder:
+
+```bash
+python -m http.server 5500
+# then open http://localhost:5500
+```
+
+## Project layout
 
 ```
-index.html          shell, fonts, script order
-css/tokens.css      design tokens (colour, type, space, radius)
-css/app.css         layout and components
-js/seed.js          deterministic demo data (contract field names)
-js/auth.js          session + role → permission matrix (contract §2)
-js/api.js           one function per contract endpoint; mock + live adapters
-js/ui.js            escaping, icons, formatting, plate chip, gate state,
-                    drawer, confirm, toasts, table, states, charts
-js/app.js           router, shell, role-aware nav, realtime bus, gate commands
-js/pages/*.js       one file per area
+index.html        app entry
+css/              design tokens and styles
+js/               demo data, sign-in and roles, demo service, UI toolkit, app shell
+js/pages/         one file per screen
+docs/             demo guide and review checklist
 ```
 
-## Design system
+## Design notes
 
-- **Direction:** a calm, dense operations tool for a gated compound's security office,
-  used all day at a desk. Clarity and scan speed over decoration.
+- **Purpose:** a calm, dense operations tool for a security office, used all day. Clarity and scan speed over decoration.
 - **Colour:**
-  - Cool neutral canvas `#f3f5f4` and white surfaces.
-  - One action green `#0f5e52`.
-  - Barrier amber `#f2b33d`, reserved for the barrier glyph, plate band and "open" state.
-  - Status colours (online/offline, allowed/suspended…) always come with an icon and a label.
-  - Roles use neutral badges: a role isn't a status.
-- **Type:**
-  - IBM Plex Sans for the interface.
-  - IBM Plex Sans Arabic for names and plates.
-  - IBM Plex Mono for IPs, IDs and times.
-  - Tabular numbers everywhere.
-- **Signature elements** (the one place the design spends boldness):
-  - The **Egyptian plate chip** (blue *EGYPT / مصر* band, Arabic letters and digits).
-  - The **barrier glyph**: arm down = closed, raised = open, dashed = unknown.
-- **Charts:**
-  - Today's movements per hour: entries vs exits as grouped columns, with a legend and hover tooltip.
-  - Traffic per gate over 30 days: single-series bars, with the method breakdown on hover.
-  - Series colours `#2a78d6` / `#eb6834`, validated for colour-vision deficiency.
-- **Patterns:**
-  - Tables with sort, search, filters and paging.
-  - Side drawers for detail and forms.
-  - Confirm dialogs for anything consequential.
-  - Toasts for outcomes.
-  - Skeleton loading, empty and error states (with retry), and a permission-denied page.
-
-## Gate semantics (kept exactly)
-
-- **`active` → Online / Offline.** Connectivity, set by health checks; never editable.
-- **`is_open` → Open / Closed.** Only while online; shown as **Unknown** when offline.
-- **Open/close is a command.** The UI shows *Command sent* and only shows the new state
-  when the gate reports it (`GATE_STATUS_CHANGED`). It warns if no report arrives within 15 s.
-- **Check status** runs a live ping.
-- The backend's daily counters (`entries_today`) are not shown; counts come from the
-  movement ledger.
-
-## Roles (simulated, intended RBAC)
-
-The navigation and actions follow `js/auth.js`. The mock also enforces it with 403
-responses, as the fixed backend will.
-
-| Area | superAdmin | admin | manager | security | resident |
-|---|:-:|:-:|:-:|:-:|:-:|
-| Dashboard, gates, activity, residents, visitors, vehicles (view) | ✓ | ✓ | ✓ | ✓ | |
-| Open / close gates, log manual movement | ✓ | ✓ | | ✓ | |
-| Manage gates and cameras | ✓ | ✓ | | | |
-| Add / edit residents and vehicles | ✓ | ✓ | ✓ | | |
-| Delete residents | ✓ | ✓ | | | |
-| Issue visitor passes | ✓ | ✓ | ✓ | ✓ | own only |
-| Staff users (view / manage / delete) | ✓ / ✓ / ✓ | ✓ / ✓ / – | ✓ / – / – | | |
-| Units & departments | ✓ | ✓ | units | | |
-
-Rows not in the backend's permission list are working assumptions until BD-5 is decided.
-
-## Known prototype limits
-
-- QR images are a visual preview; the backend generates the real PNG.
-- Lists are paged in the browser. The backend lacks totals for several lists (contract §5).
-- Data lives in memory and resets on reload.
+  - Neutral surfaces and one action green.
+  - Amber is reserved for the barrier and the "open" state.
+  - Status colours always come with an icon and a label.
+- **Type:** IBM Plex Sans, IBM Plex Sans Arabic for names and plates, and IBM Plex Mono for codes and times.
+- **Signature elements:** the Egyptian number-plate chip and the barrier glyph (arm down = closed, raised = open, dashed = unknown).
+- **Gate states:** connectivity (**Online / Offline**) and barrier position (**Open / Closed / Unknown**) are always shown separately. Opening or closing a gate is a confirmed command: the gate shows *Command sent* until it reports its new position.
